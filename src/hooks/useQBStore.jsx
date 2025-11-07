@@ -7,7 +7,10 @@ const useQBStore = create(
         set => ({
             QB: questions,
             attemptHistory: [],
-            setAttemptHistory: (attempt) => {set({attemptHistory: attempt})}
+            setAttemptHistory: (attempt) => set((state) => ({
+                attemptHistory: [...state.attemptHistory, attempt]
+            })),
+            clearHistory: () => set({ attemptHistory: [] })
         })
     )
 );
